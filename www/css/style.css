@@ -1,0 +1,64 @@
+/* Empty. Add your own CSS if you like */
+.row {
+	margin: 0 !important;
+	padding: 0 !important;
+}
+.overflow-scroll {
+	overflow-y: hidden;
+}
+
+.item-input {
+	padding: 5px;
+}
+
+.card .item.item-input input, .list-inset .item.item-input input, .padding .list .item.item-input input, .padding-horizontal .list .item.item-input input {
+     padding-right: 0;
+}
+
+.botonPlus {
+	position: relative;
+	margin-top: 13px;
+	width: 70px;
+	height: 70px;
+	border-radius: 100%;
+	left: 40%;
+}
+
+.botonX {
+	width: 45px;
+	height: 45px;
+	border-radius: 100%;
+}
+
+.notasList .col-xs-2, .notasList .col-sm-2, .notasList .col-md-2, .notasList .col-lg-2,
+.notasList .col-xs-4, .notasList .col-sm-4, .notasList .col-md-4,  .notasList .col-lg-4,
+.notasList .col-xs-3, .notasList .col-sm-3,  .notasList .col-md-3, .notasList .col-lg-3,
+.notasList .col-xs-12, .notasList .col-sm-12, .notasList .col-md-12, .notasList .col-lg-12 {
+	padding: 0 !important;
+	margin: 0 !important;
+}
+.infoBox label{
+	background: #5bc0de;
+	color: #FFFFFF;
+}
+ .infoBox input, .infoBox span{
+ 	font-size: 20px;
+ 	color: #FFFFFF;
+ }
+ .login {
+     background: url("../img/book.png");
+     background-repeat: no-repeat;
+     background-size:cover;
+     background-position: center;
+     width: 100%;
+     height: 100%;
+     margin: auto;
+     z-index: 2;
+     position:absolute;
+ }
+ .loginForm {
+		 vertical-align: center;
+		 padding-left: 10%;
+		 padding-right: 10%;
+		 padding-top: 60%;
+ }

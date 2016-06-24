@@ -1,0 +1,17 @@
+<ion-view view-title="Añadir">
+  <ion-content>
+    <div class="list">
+  <label class="item item-input item-stacked-label">
+    <span class="input-label">Nombre</span>
+    <input type="text" required ng-model="asignatura.name" placeholder="Matematicas">
+  </label>
+  <label class="item item-input item-stacked-label">
+    <span class="input-label">Nota para Aprobar</span>
+    <input type="text" required ng-model="asignatura.approveNote" value="4">
+  </label>
+  <button class="button button-block button-positive" ng-click="add()">
+  Añadir
+</button>
+</div>
+  </ion-content>
+</ion-view>

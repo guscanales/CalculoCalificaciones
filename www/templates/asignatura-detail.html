@@ -1,0 +1,75 @@
+<!--
+This template loads for the 'tab.friend-detail' state (app.js)
+'friend' is a $scope variable created in the FriendsCtrl controller (controllers.js)
+The FriendsCtrl pulls data from the Friends service (service.js)
+The Friends service returns an array of friend data
+-->
+<ion-view view-title="{{asignatura.name}}">
+<ion-content class="padding">
+<div class="row">
+     <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+          <h4 class="text-center">Examen</h4>
+     </div>
+     <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+          <h4 class="text-center">Nota</h4>
+     </div>
+     <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+          <h4 class="text-center">%</h4>
+     </div>
+</div>
+
+
+<div class="notasList">
+     <ion-list>
+     <div class="list list-inset" ng-repeat="test in asignatura.tests">
+          <div class="row">
+               <!--{{asignatura.tests[$index]}}-->
+               <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                    <button type="button" class="btn btn-danger botonX" ng-click="remove(asignatura.tests[$index], asignatura)"><span class="glyphicon glyphicon-remove"></span></button> <!-- ng-model="testId = asignatura.tests" -->
+               </div>
+               <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 infoBox">
+                    <label class="item item-input">
+                         <input type="text" value="{{test.name}}" class="text-center">
+                    </label>
+               </div>
+               <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 infoBox">
+                    <label class="item item-input">
+                         <input type="text" ng-change="addNota(inputTextValue, asignatura.tests[$index], asignatura)"
+                         ng-model="inputTextValue" ng-init="inputTextValue = test.note"
+                         class="text-center">
+                    </label>
+               </div>
+               <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 infoBox">
+                    <label class="item item-input">
+                         <!--<input type="text" value="{{test.percent}}" class="text-center">-->
+
+                         <input type="text" ng-change="addPercent(inputPercentValue, asignatura.tests[$index], asignatura)"
+                         ng-model="inputPercentValue" ng-init="inputPercentValue = test.percent"
+                         class="text-center">
+                         <span>%</span>
+                    </label>
+               </div>
+          </div>
+          <div class="row" ng-if="$index == asignatura.tests.length - 1">
+               <button type="button" class="btn btn-info btn-lg botonPlus" ng-click="addTest(newTest, asignatura)" ng-model="newTest" ng-init="newTest={id: (asignatura.tests.length + 1) ,name:'Prueba ' + (asignatura.tests.length + 1),note: 0, percent: 0}"><span class="glyphicon glyphicon-plus"></span></button>
+          </div>
+     </div>
+</ion-list>
+</div>
+
+<div class="row row-bottom">
+     <div class="card">
+          <div class="item item-text-wrap">
+               Para aprobar, debes obtener un {{asignatura.approveNote - getTotal() | number:2}} en la siguiente prueba, siempre y cuando su % sea del {{100-getTotalPercent()}}%.
+          </div>
+     </div>
+</div>
+
+</ion-content>
+
+<div class="bar bar-footer bar-balanced">
+     <div class="title footerTitle">Nota Final: {{getTotal()}}</div>
+     <!--<p>Total: {{count}}</p>-->
+</div>
+
+</ion-view>

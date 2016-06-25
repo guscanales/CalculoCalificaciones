@@ -1,11 +1,18 @@
 angular.module('starter.controllers', [])
 
-.controller('LoginCtrl', function($scope, oAuth) {
-     $scope.loginFB = function()
-     {
-       oAuth.facebookAuth();
+.controller('LoginCtrl', function($scope, $cordovaOauth, $state, $localStorage) {
+     $scope.loginFB = function() {
 
+         $cordovaOauth.facebook("942918379127837", ["email"]).then(function(result) {
+           
+           $localStorage.accessToken = result.access_token;
+           $state.go('asignaturas');
+
+         }, function(error) {
+             alert(error);
+         });
      };
+
 })
 .controller('testCtrl',function($scope, $stateParams)
 {
@@ -16,10 +23,26 @@ angular.module('starter.controllers', [])
      }
 
 })
-.controller('AsignaturasCtrl', function($scope, $state, Asignaturas) {
+.controller('AsignaturasCtrl', function($scope, $state, Asignaturas, $localStorage) {
 
      $scope.asignaturas = Asignaturas.all();
-
+     $scope.init = function()
+     {
+        if($localStorage.hasOwnProperty("accessToken") === true) {
+            $state.go('asignaturas');
+        } else {
+          $state.go('login');
+        }
+     };
+     $scope.logout = function()
+     {
+        if($localStorage.hasOwnProperty("accessToken") === true) {
+          $localStorage.$reset()
+            $state.go('login');
+        } else {
+          $state.go('login');
+        }
+     };
      $scope.addAsignature = function()
      {
           $state.go('addAsignature');

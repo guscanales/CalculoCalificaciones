@@ -1,9 +1,15 @@
-<ion-view view-title="Asignaturas" >
+<ion-view view-title="Asignaturas" ng-init="init()">
   <ion-nav-buttons side="right">
      <button class="icon ion-plus icon-positive" ng-click="addAsignature()">
-
      </button>
    </ion-nav-buttons>
+
+   <ion-nav-buttons side="left">
+      <button class="icon ion-person" ng-click="logout()">
+        Salir
+      </button>
+    </ion-nav-buttons>
+
 
   <ion-content>
     <ion-list>
